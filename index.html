@@ -1,621 +1,643 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SendFriends | A Generation on Mission</title>
+    <title>Our Journal</title>
     
-    <!-- Essential Meta Tags -->
-    <meta name="description" content="We are a collective of friends passionate about the Great Commission. Taking the greatest story to the ends of the earth.">
-    <meta name="theme-color" content="#059669">
-    <link rel="canonical" href="https://welldonecafe.github.io/sendfriends/">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://welldonecafe.github.io/sendfriends/">
-    <meta property="og:title" content="SendFriends | A Generation on Mission">
-    <meta property="og:description" content="We are a collective of friends passionate about the Great Commission. Taking the greatest story to the ends of the earth.">
-    <meta property="og:image" content="https://welldonecafe.github.io/sendfriends/image/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="SendFriends - A Generation on Mission">
-    <meta property="og:site_name" content="SendFriends">
-    <meta property="og:locale" content="en_US">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@SendFriends">
-    <meta name="twitter:url" content="https://welldonecafe.github.io/sendfriends/">
-    <meta name="twitter:title" content="SendFriends | A Generation on Mission">
-    <meta name="twitter:description" content="We are a collective of friends passionate about the Great Commission. Taking the greatest story to the ends of the earth.">
-    <meta name="twitter:image" content="https://welldonecafe.github.io/sendfriends/image/og-image.png">
-    
-    <!-- Favicons & App Icons -->
-    <link rel="icon" href="https://welldonecafe.github.io/sendfriends/image/favicon.ico" sizes="any">
-    <link rel="icon" type="image/svg+xml" href="https://welldonecafe.github.io/sendfriends/image/favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://welldonecafe.github.io/sendfriends/image/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://welldonecafe.github.io/sendfriends/image/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://welldonecafe.github.io/sendfriends/image/apple-touch-icon.png">
-    <link rel="manifest" href="https://welldonecafe.github.io/sendfriends/site.webmanifest">
-
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "SendFriends | A Generation on Mission",
-      "description": "We are a collective of friends passionate about the Great Commission. Taking the greatest story to the ends of the earth.",
-      "url": "https://welldonecafe.github.io/sendfriends/",
-      "publisher": {
-        "@type": "Organization",
-        "name": "SendFriends"
-      }
-    }
-    </script>
-
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        surface: {
+                            50: '#fafafa',
+                            100: '#f4f4f5',
+                            200: '#e4e4e7',
+                            300: '#d4d4d8',
+                            400: '#a1a1aa',
+                            500: '#71717a',
+                            600: '#52525b',
+                            700: '#3f3f46',
+                            800: '#27272a', 
+                            900: '#18181b',
+                        },
+                        // Jason's Blue Colors
+                        accentBlue: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            600: '#1d4ed8',
+                            800: '#1e3a8a',
+                            900: '#172554',
+                        },
+                        // Kelsey's Rose/Pink Colors
+                        accentRose: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            600: '#e11d48',
+                            800: '#9f1239',
+                            900: '#881337',
+                        }
                     }
                 }
             }
         }
     </script>
+    <style>
+        body {
+            background-color: #fafafa; /* surface-50 */
+            color: #18181b; /* surface-900 */
+        }
+        
+        /* Dark Mode Global Variables & Overrides */
+        .dark body {
+            background-color: #18181b;
+            color: #fafafa;
+        }
+        .dark .bg-white { background-color: #27272a; }
+        .dark .bg-surface-50 { background-color: #18181b; }
+        .dark .border-surface-200 { border-color: #3f3f46; }
+        .dark .text-surface-900 { color: #fafafa; }
+        .dark .text-surface-800 { color: #d4d4d8; }
+        .dark .text-surface-600 { color: #a1a1aa; }
+        .dark .text-surface-500 { color: #71717a; }
+
+        /* Dynamic Checkbox Styling */
+        .checkbox-jason { accent-color: #1e40af; }
+        .checkbox-kelsey { accent-color: #9f1239; }
+        
+        input[type="checkbox"] {
+            width: 1.125rem;
+            height: 1.125rem;
+            cursor: pointer;
+            border-radius: 0.25rem;
+            border-color: #cbd5e1;
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
 </head>
-<body class="min-h-screen bg-stone-50 text-stone-800 font-sans selection:bg-emerald-200">
+<body class="antialiased min-h-screen flex flex-col items-center pt-24 px-4 sm:px-6 lg:px-8 transition-colors duration-300 pb-24 md:pb-12 md:pt-20">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-stone-50/90 backdrop-blur-md z-40 border-b border-stone-200">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            
-            <!-- Logo / Home Link -->
-            <a href="#" class="flex items-center gap-2 hover:opacity-80 transition-opacity" aria-label="Go to Home">
-                <img src="https://welldonecafe.github.io/sendfriends/image/globe.png" alt="SendFriends Logo" class="w-8 h-8" />
-                <span class="text-2xl font-black tracking-tight text-stone-900">SendFriends.</span>
-            </a>
-            
-            <div class="flex items-center gap-4 sm:gap-6">
-                <div class="hidden sm:flex items-center gap-6 text-sm font-semibold text-stone-600">
-                    <a href="#story" class="hover:text-emerald-600 transition-colors">Our Story</a>
-                    <a href="#japan" class="hover:text-emerald-600 transition-colors">Japan Focus</a>
-                    <a href="#impact" class="hover:text-emerald-600 transition-colors">Impact</a>
-                </div>
-                
-                <button 
-                    onclick="openContact()"
-                    class="p-2 text-stone-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-full transition-all"
-                    aria-label="Contact Us"
-                >
-                    <i data-lucide="mail" class="w-7 h-7"></i>
-                </button>
-                
-                <a 
-                    href="https://pioneers.org/donate" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    class="flex items-center justify-center gap-2 bg-emerald-700 text-stone-50 px-6 sm:px-8 py-2.5 rounded-full font-bold text-sm hover:bg-stone-900 transition-all shadow-sm group"
-                    aria-label="Donate"
-                >
-                    <i data-lucide="heart" class="text-rose-400 w-6 h-6 group-hover:scale-110 transition-transform"></i>
-                    <span class="hidden sm:inline">Donate</span>
-                </a>
-            </div>
-        </div>
-    </nav>
+    <!-- Dark Mode Toggle (Minimalist) -->
+    <button id="darkModeToggle" class="fixed top-4 right-4 sm:top-6 sm:right-6 p-2 text-surface-400 hover:text-surface-900 dark:hover:text-white transition-colors z-50 flex items-center justify-center">
+        <!-- Moon Icon -->
+        <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="block">
+            <path d="M12 3a9 9 0 1 0 9 9 9.09 9.09 0 0 1-9-9z"></path>
+        </svg>
+        <!-- Sun Icon -->
+        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+        </svg>
+    </button>
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-20 px-6 sm:pt-40 sm:pb-32">
-        <div class="max-w-4xl mx-auto text-center space-y-8">
-            <div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full text-sm font-bold mb-4">
-                <i data-lucide="sparkles" class="w-4 h-4"></i>
-                <span>A Generation on Mission</span>
-            </div>
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-stone-900 leading-[1.1] tracking-tight max-w-3xl mx-auto text-balance">
-                Taking the Greatest Story to the ends of the earth.
-            </h1>
-            <p class="text-lg sm:text-xl text-stone-600 max-w-2xl mx-auto leading-relaxed">
-                We are a collective of friends passionate about the Great Commission. 
-                No complex jargon, no heavy bureaucracy—just radical obedience and a deep love for the unreached.
-            </p>
-            <div class="pt-4">
-                <a href="#story" class="inline-flex items-center gap-2 text-emerald-700 font-bold hover:gap-4 transition-all group">
-                    Discover our mission <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Story / Mission Section -->
-    <section id="story" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-black text-stone-900 mb-4">The Heartbeat</h2>
-                <p class="text-stone-500 max-w-2xl mx-auto">Why we do what we do, broken down into three simple truths.</p>
-            </div>
-            
-            <div class="grid sm:grid-cols-3 gap-8">
-                <div class="bg-stone-50 p-8 rounded-3xl border border-stone-100">
-                    <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 mb-6">
-                        <i data-lucide="map" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-stone-900">The Journey</h3>
-                    <p class="text-stone-600 leading-relaxed">
-                        It starts with a simple "yes". We believe everyone has a role to play in God's global story. Whether you are called to go, pray, or send, the journey is meant to be taken together as friends.
-                    </p>
-                </div>
-                
-                <div class="bg-stone-50 p-8 rounded-3xl border border-stone-100">
-                    <div class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 mb-6">
-                        <i data-lucide="users" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-stone-900">The Unreached</h3>
-                    <p class="text-stone-600 leading-relaxed">
-                        Over 3 billion people have never heard the name of Jesus. They don't have a Bible in their language or a believer in their neighborhood. We are focusing our lives on changing that statistic.
-                    </p>
-                </div>
-
-                <div class="bg-stone-50 p-8 rounded-3xl border border-stone-100">
-                    <div class="w-12 h-12 bg-rose-100 rounded-2xl flex items-center justify-center text-rose-600 mb-6">
-                        <i data-lucide="book-open" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-stone-900">Great Commission</h3>
-                    <p class="text-stone-600 leading-relaxed">
-                        Matthew 28 isn't the "Great Suggestion." It's our primary calling. We exist to make disciples of all nations, prioritizing places where the gospel has not yet taken root.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Country Focus: Japan -->
-    <section id="japan" class="py-20 sm:py-32 bg-stone-900 text-stone-50 relative overflow-hidden">
+    <div class="max-w-7xl w-full space-y-10">
         
-        <!-- Detailed Japanese Archipelago Vector Outline -->
-        <div class="absolute inset-0 z-0 opacity-10 sm:opacity-15 pointer-events-none flex justify-end items-center pr-2 md:pr-16 lg:pr-24 overflow-hidden">
-            <svg viewBox="0 0 750 940" class="w-[400px] h-[500px] md:w-[580px] md:h-[720px] text-rose-500 fill-current stroke-rose-400/60 stroke-[1.5] filter drop-shadow-[0_0_15px_rgba(244,63,94,0.25)]" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Hokkaido -->
-                <path d="M575,70 C582,78 595,95 618,110 C635,120 658,124 668,135 C672,140 668,148 658,150 C650,152 662,158 678,162 C685,164 682,172 670,175 C650,180 635,190 622,212 C612,230 605,250 600,252 C595,252 588,238 578,232 C565,225 552,218 535,222 C520,225 510,235 502,242 C495,250 505,268 518,285 C524,295 522,305 515,308 C505,310 495,300 488,285 C482,272 478,252 485,240 C490,230 498,212 505,198 C515,180 522,185 530,175 C538,165 540,140 545,115 C550,92 562,75 575,70 Z" />
-                
-                <!-- Sado Island -->
-                <path d="M428,348 C436,340 446,342 448,350 C445,358 435,364 426,358 C424,354 425,350 428,348 Z" />
-
-                <!-- Honshu -->
-                <path d="M525,308 C535,318 532,328 528,330 C518,332 512,326 505,335 C498,312 488,322 490,338 C478,345 470,352 465,362 C462,368 472,374 466,395 C455,420 435,440 425,455 C420,442 418,422 410,412 C402,405 392,415 392,440 C392,458 385,472 375,485 C360,495 345,505 328,518 C305,532 278,552 260,568 C248,576 242,580 242,584 C245,592 260,590 285,580 C315,570 345,565 356,564 C365,568 375,585 382,602 C395,618 410,622 418,605 C425,588 425,568 438,554 C448,555 456,548 462,555 C472,578 478,572 478,560 C488,558 495,545 504,555 C515,568 528,555 528,545 C520,520 510,488 518,455 C528,440 545,420 548,402 C550,380 545,355 530,340 C528,328 520,318 525,308 Z" />
-
-                <!-- Awaji Island -->
-                <path d="M358,566 C364,562 368,568 365,576 C360,580 356,575 358,566 Z" />
-
-                <!-- Shikoku -->
-                <path d="M348,575 C355,585 358,605 348,632 C342,648 335,655 330,652 C320,642 305,640 292,658 C282,670 274,665 272,652 C268,635 272,618 262,605 C255,595 260,592 272,596 C285,600 295,588 312,580 C328,575 340,570 348,575 Z" />
-
-                <!-- Kyushu -->
-                <path d="M242,595 C252,605 258,618 255,632 C252,645 248,665 248,695 C246,715 238,735 230,738 C222,740 218,728 220,715 C215,705 218,690 212,695 C205,702 208,718 202,720 C195,720 192,705 195,688 C198,675 190,660 192,645 C195,635 185,630 178,622 C172,615 178,602 188,598 C198,595 208,600 218,594 C228,590 236,590 242,595 Z" />
-
-                <!-- Nansei / Okinawa Islands Chain -->
-                <!-- Tanegashima -->
-                <path d="M232,752 C236,748 239,756 237,766 C234,772 230,766 232,752 Z" />
-                <!-- Yakushima -->
-                <path d="M214,758 C221,755 224,763 221,769 C215,772 211,768 214,758 Z" />
-                <!-- Amami Oshima -->
-                <path d="M175,792 C183,788 187,795 182,803 C174,807 169,801 175,792 Z" />
-                <!-- Tokunoshima -->
-                <path d="M155,815 C161,812 163,818 159,823 C153,825 151,820 155,815 Z" />
-                <!-- Okinawa Main Island -->
-                <path d="M128,832 C136,825 143,831 138,843 C130,856 120,866 115,861 C111,855 120,845 128,832 Z" />
-                <!-- Miyako Islands -->
-                <path d="M85,885 C91,882 93,889 88,893 C82,895 81,890 85,885 Z" />
-                <!-- Yaeyama Islands (Ishigaki/Iriomote) -->
-                <path d="M58,905 C65,902 67,909 62,913 C55,915 54,910 58,905 Z" />
-            </svg>
-        </div>
-        
-        <div class="max-w-6xl mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-16 items-center">
-            <div>
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-stone-800 text-stone-300 rounded-full text-xs font-bold mb-6 tracking-wider uppercase shadow-inner">
-                    Current Focus
-                </div>
-                <h2 class="text-4xl sm:text-6xl font-black mb-6 text-white drop-shadow-md">
-                    Target: <span class="text-rose-400">Japan</span>
-                </h2>
-                <p class="text-stone-300 text-lg leading-relaxed mb-8">
-                    Japan is the second largest unreached people group in the world. Despite being highly developed and technologically advanced, less than 1% of the population knows Jesus. We are sending teams to build relationships, plant seeds, and trust God for a revival in the Land of the Rising Sun.
-                </p>
-                
-                <ul class="space-y-4 mb-8">
-                    <li class="flex items-center gap-3 text-stone-200 font-medium">
-                        <div class="w-2.5 h-2.5 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.6)]"></div>
-                        120+ Million Population
-                    </li>
-                    <li class="flex items-center gap-3 text-stone-200 font-medium">
-                        <div class="w-2.5 h-2.5 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.6)]"></div>
-                        &lt; 1% Evangelical Christian
-                    </li>
-                    <li class="flex items-center gap-3 text-stone-200 font-medium">
-                        <div class="w-2.5 h-2.5 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.6)]"></div>
-                        Deep need for community & hope
-                    </li>
-                </ul>
+        <header class="text-center space-y-4">
+            <h1 class="text-4xl md:text-6xl font-serif text-surface-900 dark:text-white tracking-wide font-semibold">Our Journal</h1>
+            <p class="text-surface-600 dark:text-surface-300 text-lg md:text-xl font-serif italic tracking-wide">"Building the vision. Protecting the atmosphere."</p>
+            <div class="pt-4 flex justify-center">
+                <span id="currentDate" class="text-sm font-medium text-surface-800 dark:text-surface-300 uppercase tracking-widest border-b border-surface-200 dark:border-surface-700 pb-1"></span>
             </div>
             
-            <!-- Surprise Feature: Interactive Prayer Focus -->
-            <div class="bg-stone-800/90 backdrop-blur p-8 sm:p-10 rounded-[2rem] border border-stone-700 shadow-2xl relative">
-                <div class="flex justify-between items-center mb-8">
-                    <h3 class="text-2xl font-bold flex items-center gap-2">
-                        <i data-lucide="sparkles" class="text-amber-400 w-6 h-6"></i>
-                        Daily Prayer Focus
+            <!-- User Switcher -->
+            <div class="flex justify-center gap-4 mt-6">
+                <button id="btnKelsey" class="px-6 py-2 rounded-full font-medium text-sm transition-colors bg-accentRose-900 text-white shadow-md">Kelsey's Entry</button>
+                <button id="btnJason" class="px-6 py-2 rounded-full font-medium text-sm transition-colors bg-white text-surface-600 border border-surface-200 hover:bg-accentBlue-50">Jason's Entry</button>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Left Column: Organic Notebook (Takes up 2/3 width) -->
+            <div id="section-notebook" class="lg:col-span-2 space-y-8 scroll-mt-20">
+                
+                <!-- Main Notebook Content -->
+                <section class="space-y-6 bg-white dark:bg-surface-800 p-8 rounded-md border border-surface-200 dark:border-surface-700 transition-colors">
+                    <div class="flex justify-between items-center border-b border-surface-200 dark:border-surface-700 pb-4 mb-4">
+                        <h2 id="notebookTitle" class="text-3xl font-serif text-surface-900 dark:text-white font-semibold">Understanding Our Dynamic</h2>
+                        <i class="fa-solid fa-book-open text-surface-300 dark:text-surface-600 text-xl"></i>
+                    </div>
+                    
+                    <div id="notebookContent" class="prose dark:prose-invert prose-surface max-w-none space-y-6">
+                        <!-- Populated dynamically by JS -->
+                    </div>
+                </section>
+
+                <!-- Core Relationship Milestones / Reminders -->
+                <div class="pt-6">
+                    <h3 class="text-xl font-serif text-surface-900 dark:text-white font-semibold mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-seedling text-surface-400"></i> Core Philosophy
                     </h3>
+                    <div class="relative border-l border-surface-200 dark:border-surface-700 ml-3 pl-6 space-y-8">
+                        <div class="relative group">
+                            <div class="absolute -left-[31px] bg-surface-200 dark:bg-surface-700 h-4 w-4 rounded-full border-2 border-white dark:border-surface-900 mt-1"></div>
+                            <h4 class="text-sm font-bold text-surface-900 dark:text-white mb-1">The Goal</h4>
+                            <p class="text-sm text-surface-800 dark:text-surface-300">"We are building a kingdom together." Not a chaotic artistic soulmate dynamic, but an effective, structured, and deeply loving partnership.</p>
+                        </div>
+                        <div class="relative group">
+                            <div class="absolute -left-[31px] bg-surface-200 dark:bg-surface-700 h-4 w-4 rounded-full border-2 border-white dark:border-surface-900 mt-1"></div>
+                            <h4 class="text-sm font-bold text-surface-900 dark:text-white mb-1">The Synergy</h4>
+                            <p class="text-sm text-surface-800 dark:text-surface-300">One builds the future structure. The other makes the future feel like a home. Both are externally engaged, organized, and willing to work hard for shared goals.</p>
+                        </div>
+                        <div class="relative group">
+                            <div class="absolute -left-[31px] bg-surface-200 dark:bg-surface-700 h-4 w-4 rounded-full border-2 border-white dark:border-surface-900 mt-1"></div>
+                            <h4 class="text-sm font-bold text-surface-900 dark:text-white mb-1">Preventing the Toxic Loop</h4>
+                            <p class="text-sm text-surface-800 dark:text-surface-300">When stressed, avoid the "Manager vs. Exhausted Caretaker" dynamic. He must learn tenderness; she must learn resilience. Both must respect each other's role.</p>
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+            <div id="section-tracker" class="space-y-8 scroll-mt-20">
                 
-                <div class="bg-stone-900 p-6 rounded-2xl min-h-[160px] flex items-center mb-6 shadow-inner">
-                    <p id="prayer-text" class="text-lg sm:text-xl font-medium leading-relaxed text-stone-200 transition-opacity duration-300">
+                <!-- Goal Tracker -->
+                <div class="bg-white p-6 rounded-md border border-surface-200 transition-colors">
+                    <h3 class="text-xl font-serif text-surface-900 font-semibold mb-2">Daily Objectives</h3>
+                    <p class="text-xs text-surface-800 mb-5">Navigating the "Manager vs. Caretaker" loop.</p>
+                    
+                    <div id="goalsContainer" class="space-y-4">
+                        <!-- Populated by JS based on user -->
+                    </div>
+                </div>
+
+                <!-- Daily Word -->
+                <div id="bibleContainer" class="bg-accentRose-900 p-6 rounded-md text-white transition-colors duration-300">
+                    <h3 class="text-sm font-bold text-white/70 uppercase tracking-wider mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-book-bible"></i> Daily Anchor
+                    </h3>
+                    <blockquote id="bibleVerse" class="font-serif text-lg leading-relaxed italic mb-3">
                         <!-- Populated by JS -->
-                    </p>
+                    </blockquote>
+                    <span id="bibleRef" class="text-sm text-white/80 font-medium"></span>
                 </div>
+
+                <!-- Navigating Kelsey (ESFJ) Cheat Sheet -->
+                <div id="kelseyCheatSheet" class="bg-surface-50 p-6 rounded-md border-l-4 border-l-accentBlue-600 border border-surface-200 hidden transition-colors">
+                    <h3 class="text-lg font-serif text-surface-900 font-semibold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-map text-accentBlue-600"></i> Navigating Kelsey
+                    </h3>
+                    <ul class="space-y-4 text-sm text-surface-800">
+                        <li class="flex flex-col">
+                            <span class="font-bold text-surface-900">What She Sees in You</span>
+                            <span>She values your secure, visionary leadership. It makes her feel protected from chaos.</span>
+                        </li>
+                        <li class="flex flex-col pt-3 border-t border-surface-200">
+                            <span class="font-bold text-surface-900">The Core Conflict</span>
+                            <span>You believe truth > comfort. She believes tone and harmony matter just as much. *Watch your delivery.*</span>
+                        </li>
+                        <li class="flex flex-col pt-3 border-t border-surface-200">
+                            <span class="font-bold text-surface-900">Her Superpower</span>
+                            <span>She builds the atmosphere. She organizes life around you and remembers details you miss.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Navigating Jason (ENTJ) Cheat Sheet -->
+                <div id="jasonCheatSheet" class="bg-surface-50 p-6 rounded-md border-l-4 border-l-accentRose-600 border border-surface-200 block transition-colors">
+                    <h3 class="text-lg font-serif text-surface-900 font-semibold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-map text-accentRose-600"></i> Navigating Jason
+                    </h3>
+                    <ul class="space-y-4 text-sm text-surface-800">
+                        <li class="flex flex-col">
+                            <span class="font-bold text-surface-900">What He Needs</span>
+                            <span>He values directness, competence, and action. He wants to know *why* something matters logically.</span>
+                        </li>
+                        <li class="flex flex-col pt-3 border-t border-surface-200">
+                            <span class="font-bold text-surface-900">The Core Conflict</span>
+                            <span>When he is blunt or impatient, he is often focused on *fixing the problem*, not dismissing your feelings.</span>
+                        </li>
+                        <li class="flex flex-col pt-3 border-t border-surface-200">
+                            <span class="font-bold text-surface-900">His Superpower</span>
+                            <span>He builds the structure and future plans. He provides decisive leadership and stability.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="section-resources" class="mt-12 bg-white rounded-md border border-surface-200 p-6 md:p-8 transition-colors scroll-mt-20">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+                <h2 class="text-2xl font-serif text-surface-900 font-semibold">Resource Library</h2>
                 
-                <button 
-                    onclick="nextPrayer()"
-                    class="w-full bg-stone-700 hover:bg-emerald-600 text-white font-bold py-4 rounded-xl transition-colors flex justify-center items-center gap-2 group"
-                >
-                    Generate New Prayer Need
-                    <i data-lucide="refresh-cw" class="w-5 h-5 group-hover:rotate-180 transition-transform duration-500"></i>
-                </button>
-                <p class="text-center text-stone-500 text-xs mt-4">
-                    Join us in lifting up Japan right where you are.
-                </p>
+                <!-- Search Bar -->
+                <div class="relative w-full md:w-72">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="fa-solid fa-search text-surface-400"></i>
+                    </div>
+                    <input type="text" id="articleSearch" class="bg-surface-50 border border-surface-200 text-surface-900 text-sm rounded-lg focus:ring-accentBlue-600 focus:border-accentBlue-600 block w-full pl-10 p-2.5 dynamic-search-focus transition-colors" placeholder="Search articles, topics...">
+                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Impact Section -->
-    <section id="impact" class="py-20 bg-emerald-900 text-emerald-50">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="text-3xl sm:text-4xl font-black mb-16 text-white">Our Growing Impact</h2>
+            <!-- Article Grid -->
+            <div id="articleGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Article 1 -->
+                <div class="article-card jason-tag flex flex-col border border-surface-200 rounded-lg overflow-hidden hover:shadow-md transition-all bg-white" data-title="men intimacy begins with good listening" data-tags="communication emotion desiring god jason">
+                    <div class="p-5 flex-grow">
+                        <span class="text-xs font-bold text-accentBlue-600 uppercase tracking-wider mb-2 block">Desiring God</span>
+                        <h3 class="font-serif text-lg text-surface-900 font-semibold mb-2 leading-tight">Men, Intimacy Begins with Good Listening</h3>
+                        <p class="text-sm text-surface-800 mb-4 line-clamp-3">
+                            The primary task of listening is to understand someone else, to know what it is like to be them. Often, when we hear someone speak, we are simply waiting to reply or fix it.
+                        </p>
+                    </div>
+                    <div class="px-5 pb-5 mt-auto">
+                        <a href="https://www.desiringgod.org/articles/men-intimacy-begins-with-good-listening" target="_blank" class="text-sm font-medium text-accentBlue-600 hover:text-accentBlue-800 flex items-center gap-1 transition-colors">
+                            Read Article <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="article-card kelsey-tag flex flex-col border border-surface-200 rounded-lg overflow-hidden hover:shadow-md transition-all bg-white" data-title="the strength of an esfsj wife" data-tags="esfj roles support kelsey">
+                    <div class="p-5 flex-grow">
+                        <span class="text-xs font-bold text-accentRose-600 uppercase tracking-wider mb-2 block">Personality Insights</span>
+                        <h3 class="font-serif text-lg text-surface-900 font-semibold mb-2 leading-tight">Recognizing the Power of the ESFJ Wife</h3>
+                        <p class="text-sm text-surface-800 mb-4 line-clamp-3">
+                            An ESFJ woman often brings warmth, social intelligence, and relational loyalty. She is the queen of the community, building the home around your vision.
+                        </p>
+                    </div>
+                    <div class="px-5 pb-5 mt-auto">
+                        <a href="#" class="text-sm font-medium text-accentRose-600 hover:text-accentRose-800 flex items-center gap-1 transition-colors">
+                            Read Notes <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="article-card jason-tag flex flex-col border border-surface-200 rounded-lg overflow-hidden hover:shadow-md transition-all bg-white" data-title="love your wife like jesus loves her" data-tags="marriage leadership grace jason">
+                    <div class="p-5 flex-grow">
+                        <span class="text-xs font-bold text-accentBlue-600 uppercase tracking-wider mb-2 block">Desiring God</span>
+                        <h3 class="font-serif text-lg text-surface-900 font-semibold mb-2 leading-tight">Love Your Wife Like Jesus Loves Her</h3>
+                        <p class="text-sm text-surface-800 mb-4 line-clamp-3">
+                            God expects a husband to lead by sacrificial love, to honor his wife and live mindful of her needs, to be gentle, not harsh.
+                        </p>
+                    </div>
+                    <div class="px-5 pb-5 mt-auto">
+                        <a href="#" class="text-sm font-medium text-accentBlue-600 hover:text-accentBlue-800 flex items-center gap-1 transition-colors">
+                            Read Article <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                 <!-- Article 4 (For Kelsey) -->
+                 <div class="article-card kelsey-tag flex flex-col border border-surface-200 rounded-lg overflow-hidden hover:shadow-md transition-all bg-white" data-title="marriage gods showcase of covenant keeping grace" data-tags="marriage grace desiring god kelsey">
+                    <div class="p-5 flex-grow">
+                        <span class="text-xs font-bold text-accentRose-600 uppercase tracking-wider mb-2 block">Desiring God</span>
+                        <h3 class="font-serif text-lg text-surface-900 font-semibold mb-2 leading-tight">Marriage: God's Showcase of Grace</h3>
+                        <p class="text-sm text-surface-800 mb-4 line-clamp-3">
+                            In marriage you live hour by hour in glad dependence on God's forgiveness and justification and promised future grace, and you bend it out toward your spouse hour by hour.
+                        </p>
+                    </div>
+                    <div class="px-5 pb-5 mt-auto">
+                        <a href="https://www.desiringgod.org/messages/marriage-gods-showcase-of-covenant-keeping-grace" target="_blank" class="text-sm font-medium text-accentRose-600 hover:text-accentRose-800 flex items-center gap-1 transition-colors">
+                            Read Article <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Article 5 (For Jason) -->
+                <div class="article-card jason-tag flex flex-col border border-surface-200 rounded-lg overflow-hidden hover:shadow-md transition-all bg-white" data-title="listening to understand not to fix" data-tags="communication listening focus on the family jason">
+                    <div class="p-5 flex-grow">
+                        <span class="text-xs font-bold text-accentBlue-600 uppercase tracking-wider mb-2 block">Focus on the Family</span>
+                        <h3 class="font-serif text-lg text-surface-900 font-semibold mb-2 leading-tight">Listening to Understand, Not to Fix</h3>
+                        <p class="text-sm text-surface-800 mb-4 line-clamp-3">
+                            For men wired to solve problems, it can be a challenge to just sit and listen. Discover how shifting your goal from "fixing the issue" to "understanding her heart" transforms communication.
+                        </p>
+                    </div>
+                    <div class="px-5 pb-5 mt-auto">
+                        <a href="#" class="text-sm font-medium text-accentBlue-600 hover:text-accentBlue-800 flex items-center gap-1 transition-colors">
+                            Read Article <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Article 6 (For Kelsey) -->
+                <div class="article-card kelsey-tag flex flex-col border border-surface-200 rounded-lg overflow-hidden hover:shadow-md transition-all bg-white" data-title="understanding your husbands need for respect" data-tags="communication respect focus on the family kelsey">
+                    <div class="p-5 flex-grow">
+                        <span class="text-xs font-bold text-accentRose-600 uppercase tracking-wider mb-2 block">Focus on the Family</span>
+                        <h3 class="font-serif text-lg text-surface-900 font-semibold mb-2 leading-tight">Understanding Your Husband's Need for Respect</h3>
+                        <p class="text-sm text-surface-800 mb-4 line-clamp-3">
+                            Men thrive in an environment of respect, especially from their wives. Learn how affirming his leadership and competence can positively change the atmosphere of your home.
+                        </p>
+                    </div>
+                    <div class="px-5 pb-5 mt-auto">
+                        <a href="#" class="text-sm font-medium text-accentRose-600 hover:text-accentRose-800 flex items-center gap-1 transition-colors">
+                            Read Article <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Article 7 (Both) -->
+                <div class="article-card jason-tag kelsey-tag flex flex-col border border-surface-200 rounded-lg overflow-hidden hover:shadow-md transition-all bg-white" data-title="the art of active listening in marriage" data-tags="communication listening active both">
+                    <div class="p-5 flex-grow">
+                        <span class="text-xs font-bold text-surface-500 dark:text-surface-400 uppercase tracking-wider mb-2 block">Marriage Resources</span>
+                        <h3 class="font-serif text-lg text-surface-900 font-semibold mb-2 leading-tight">The Art of Active Listening</h3>
+                        <p class="text-sm text-surface-800 mb-4 line-clamp-3">
+                            Communication breaks down when we assume what our spouse means. Active listening requires patience, clarifying questions, and putting our own defenses down.
+                        </p>
+                    </div>
+                    <div class="px-5 pb-5 mt-auto">
+                        <a href="#" class="text-sm font-medium text-surface-600 dark:text-surface-400 hover:text-surface-800 dark:hover:text-white flex items-center gap-1 transition-colors">
+                            Read Article <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="space-y-2">
-                    <div class="text-4xl sm:text-6xl font-black text-emerald-300 count-up" data-target="1">0</div>
-                    <div class="text-sm font-medium uppercase tracking-widest text-emerald-200">Singular Focus</div>
-                </div>
-                <div class="space-y-2">
-                    <div class="text-4xl sm:text-6xl font-black text-emerald-300 count-up" data-target="3">0</div>
-                    <div class="text-sm font-medium uppercase tracking-widest text-emerald-200">Cities Reached</div>
-                </div>
-                <div class="space-y-2">
-                    <div class="text-4xl sm:text-6xl font-black text-emerald-300 count-up" data-target="12" data-suffix="+">0</div>
-                    <div class="text-sm font-medium uppercase tracking-widest text-emerald-200">Sent Friends</div>
-                </div>
-                <div class="space-y-2">
-                    <div class="text-4xl sm:text-6xl font-black text-emerald-300 count-up" data-target="500" data-suffix="+">0</div>
-                    <div class="text-sm font-medium uppercase tracking-widest text-emerald-200">Prayer Partners</div>
-                </div>
+            <!-- Empty State for Search -->
+            <div id="noResults" class="hidden text-center py-10 text-surface-500">
+                <i class="fa-solid fa-search text-3xl mb-3 text-surface-300"></i>
+                <p>No resources found matching your search.</p>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-stone-50 py-12 border-t border-stone-200 text-center text-stone-500">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col items-center">
-            <a href="#" class="flex items-center gap-2 mb-6 hover:opacity-80 transition-opacity">
-                <img src="https://welldonecafe.github.io/sendfriends/image/globe.png" alt="SendFriends Logo" class="w-7 h-7" />
-                <span class="text-xl font-black text-stone-900">SendFriends.</span>
-            </a>
-            <p class="mb-6 max-w-md mx-auto text-sm">
-                Partnering with Pioneers USA to bring the hope of the gospel to the unreached.
-            </p>
-            <div class="flex gap-4 mb-8">
-                <a href="https://pioneers.org/donate" target="_blank" rel="noopener noreferrer" class="text-stone-900 font-bold hover:text-emerald-600 underline decoration-2 underline-offset-4">
-                    Support the Mission
-                </a>
-                <span class="text-stone-300">•</span>
-                <button onclick="openContact()" class="text-stone-900 font-bold hover:text-emerald-600 underline decoration-2 underline-offset-4">
-                    Get in Touch
-                </button>
-            </div>
-            <p class="text-xs">
-                © <span id="year"></span> SendFriends. All rights reserved. 
-            </p>
-        </div>
-    </footer>
-
-    <!-- Contact Form Modal (Hidden by default) -->
-    <div id="contact-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
-        <!-- Backdrop -->
-        <div 
-            class="absolute inset-0 bg-stone-900/60 backdrop-blur-sm cursor-pointer"
-            onclick="closeContact()"
-        ></div>
         
-        <!-- Modal Content -->
-        <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl p-5 sm:p-8 transform transition-all max-h-[95vh] overflow-y-auto">
-            
-            <button 
-                onclick="closeContact()"
-                class="absolute top-5 right-5 text-stone-400 hover:text-stone-900 bg-stone-100 hover:bg-stone-200 rounded-full p-2 transition-colors z-10"
-                aria-label="Close"
-            >
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-
-            <!-- FORM ENTRY VIEW -->
-            <div id="form-view">
-                <div class="mb-4 pr-8">
-                    <h2 class="text-3xl font-black text-stone-900 mb-1">Hey There!</h2>
-                    <p class="text-stone-500 text-sm">Want to join the mission, or just grab a coffee? Drop us a line.</p>
-                </div>
-                
-                <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-3">
-                    <!-- FormSubmit setup fields -->
-                    <input type="hidden" name="_subject" value="New message from SendFriends Website!" />
-                    <input type="hidden" name="_template" value="table" />
-                    <input type="hidden" name="_captcha" value="false" />
-                    
-                    <div>
-                        <label for="name" class="block text-sm font-bold text-stone-700 mb-1">Your Name</label>
-                        <input 
-                            type="text" 
-                            id="name"
-                            name="name" 
-                            required
-                            class="w-full px-4 py-2.5 rounded-xl bg-stone-50 border border-stone-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-                            placeholder="Jane Doe"
-                        />
-                    </div>
-                    
-                    <div>
-                        <label for="email" class="block text-sm font-bold text-stone-700 mb-1">Email Address</label>
-                        <input 
-                            type="email" 
-                            id="email"
-                            name="email" 
-                            required
-                            class="w-full px-4 py-2.5 rounded-xl bg-stone-50 border border-stone-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-                            placeholder="jane@example.com"
-                        />
-                    </div>
-                    
-                    <div>
-                        <label for="message" class="block text-sm font-bold text-stone-700 mb-1">Message</label>
-                        <textarea 
-                            id="message"
-                            name="message" 
-                            required
-                            rows="3"
-                            class="w-full px-4 py-2.5 rounded-xl bg-stone-50 border border-stone-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none"
-                            placeholder="I'd love to hear more about your Japan trips..."
-                        ></textarea>
-                    </div>
-
-                    <!-- Custom Math CAPTCHA -->
-                    <div>
-                        <label for="captcha-answer" class="block text-sm font-bold text-stone-700 mb-1">
-                            Security Check: <span id="captcha-question" class="text-emerald-700"></span>
-                        </label>
-                        <input 
-                            type="number" 
-                            id="captcha-answer"
-                            required
-                            class="w-full px-4 py-2.5 rounded-xl bg-stone-50 border border-stone-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-                            placeholder="Enter the sum..."
-                        />
-                    </div>
-                    
-                    <button 
-                        id="submit-btn"
-                        type="submit"
-                        class="w-full bg-stone-900 text-white font-bold py-3 rounded-xl hover:bg-emerald-700 transition-colors flex justify-center items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
-                    >
-                        Send Message <i data-lucide="send" class="w-4 h-4"></i>
-                    </button>
-                    
-                    <p class="text-xs text-center text-stone-400">
-                        Powered by FormSubmit. No spam, we promise.
-                    </p>
-
-                    <!-- Status Message Display (Hidden by Default) -->
-                    <div id="form-status" class="hidden mt-2 text-center"></div>
-                </form>
-            </div>
-
-            <!-- SUCCESS MESSAGE VIEW -->
-            <div id="success-view" class="hidden text-center py-6">
-                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i data-lucide="check" class="w-8 h-8"></i>
-                </div>
-                <h2 class="text-2xl font-black text-stone-900 mb-2">Thank You!</h2>
-                <p class="text-stone-500 mb-6">Your message has been sent successfully. We'll be in touch soon!</p>
-                <button 
-                    onclick="closeContact()" 
-                    class="w-full bg-stone-900 text-white font-bold py-3 rounded-xl hover:bg-emerald-700 transition-colors"
-                >
-                    Close Window
-                </button>
-            </div>
-        </div>
+        <footer class="pt-6 pb-4 md:pb-12 text-center text-surface-500 text-sm">
+            <p>Jason & Kelsey &middot; ENTJ & ESFJ</p>
+        </footer>
     </div>
 
-    <!-- Application Logic -->
+    <!-- Mobile Nav Bar (Anchors) -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full bg-white dark:bg-surface-800 border-t border-surface-200 dark:border-surface-700 flex justify-around p-2 z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] transition-colors">
+        <a href="#section-notebook" class="mobile-nav-link flex flex-col items-center p-2 text-surface-500 hover:text-accentRose-600 transition-colors w-1/3">
+            <i class="fa-solid fa-book text-lg mb-1"></i>
+            <span class="text-[10px] uppercase font-bold tracking-wider">Notebook</span>
+        </a>
+        <a href="#section-tracker" class="mobile-nav-link flex flex-col items-center p-2 text-surface-500 hover:text-accentRose-600 transition-colors w-1/3 border-l border-r border-surface-200 dark:border-surface-700">
+            <i class="fa-solid fa-list-check text-lg mb-1"></i>
+            <span class="text-[10px] uppercase font-bold tracking-wider">Goals</span>
+        </a>
+        <a href="#section-resources" class="mobile-nav-link flex flex-col items-center p-2 text-surface-500 hover:text-accentRose-600 transition-colors w-1/3">
+            <i class="fa-solid fa-book-open text-lg mb-1"></i>
+            <span class="text-[10px] uppercase font-bold tracking-wider">Library</span>
+        </a>
+    </nav>
+
     <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const moonIcon = document.getElementById('moonIcon');
+            const sunIcon = document.getElementById('sunIcon');
+            
+            // Default to light mode unless explicitly set to dark in localStorage
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                moonIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                moonIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+            }
 
-        // Set Current Year in Footer
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Prayer Generator Logic
-        const prayerPrompts = [
-            "Pray for the 120+ million unreached people in Japan to experience the love of Christ.",
-            "Pray for isolation and loneliness among Japanese youth to be met with true community.",
-            "Pray for our field teams learning the language and building initial relationships.",
-            "Pray for the multiplication of local, indigenous church leaders in Tokyo.",
-            "Pray for a breakthrough in rural Japanese towns where no churches exist."
-        ];
-        
-        let prayerIndex = 0;
-        const prayerElement = document.getElementById('prayer-text');
-        
-        if (prayerElement) {
-            prayerElement.innerText = `"${prayerPrompts[0]}"`;
-        }
-
-        function nextPrayer() {
-            prayerIndex = (prayerIndex + 1) % prayerPrompts.length;
-            prayerElement.style.opacity = 0;
-            setTimeout(() => {
-                prayerElement.innerText = `"${prayerPrompts[prayerIndex]}"`;
-                prayerElement.style.opacity = 1;
-            }, 200);
-        }
-
-        // Impact Number Count-Up Logic
-        const animateCountUp = (el) => {
-            const target = parseInt(el.getAttribute('data-target'));
-            const suffix = el.getAttribute('data-suffix') || '';
-            const duration = 1200; // 1.2 seconds animation for a slightly faster effect
-            const startTime = performance.now();
-
-            const updateCounter = (currentTime) => {
-                const elapsedTime = currentTime - startTime;
-                if (elapsedTime < duration) {
-                    // Ease-out quad calculation for smooth deceleration
-                    const progress = elapsedTime / duration;
-                    const easeOut = progress * (2 - progress);
-                    const currentValue = Math.floor(easeOut * target);
-                    
-                    el.innerText = currentValue + suffix;
-                    requestAnimationFrame(updateCounter);
+            darkModeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                if (document.documentElement.classList.contains('dark')) {
+                    localStorage.setItem('theme', 'dark');
+                    moonIcon.classList.add('hidden');
+                    sunIcon.classList.remove('hidden');
                 } else {
-                    el.innerText = target + suffix; // Ensure final target is met
+                    localStorage.setItem('theme', 'light');
+                    moonIcon.classList.remove('hidden');
+                    sunIcon.classList.add('hidden');
                 }
+            });
+
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', dateOptions);
+
+            let currentUser = 'kelsey'; // 'jason' or 'kelsey'
+
+            const btnJason = document.getElementById('btnJason');
+            const btnKelsey = document.getElementById('btnKelsey');
+            const notebookTitle = document.getElementById('notebookTitle');
+            const notebookContent = document.getElementById('notebookContent');
+            const goalsContainer = document.getElementById('goalsContainer');
+            const bibleContainer = document.getElementById('bibleContainer');
+            const kelseyCheatSheet = document.getElementById('kelseyCheatSheet');
+            const jasonCheatSheet = document.getElementById('jasonCheatSheet');
+            const searchInput = document.getElementById('articleSearch');
+            
+            const articleCards = document.querySelectorAll('.article-card');
+            const noResults = document.getElementById('noResults');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+            // Notebook Content Data
+            const notebookData = {
+                kelsey: `
+                    <h3 class="text-xl font-serif text-accentRose-800 dark:text-accentRose-400 font-semibold mt-0">The ESFJ Atmosphere Builder</h3>
+                    <p>An ESFJ woman often brings warmth, social intelligence, emotional attentiveness, relational loyalty, and practical nurturing. She is the "queen of the community." She naturally organizes life, remembers details, and protects the emotional environment.</p>
+                    
+                    <h4 class="text-lg font-serif text-surface-900 dark:text-white font-semibold mt-6">What She Sees in Him (ENTJ)</h4>
+                    <ul class="list-disc pl-5 space-y-2 marker:text-accentRose-600">
+                        <li><strong>Powerful & Secure:</strong> She experiences him as competent, visionary, and protective.</li>
+                        <li><strong>Stable Leadership:</strong> ENTJs project certainty and direction, which fulfills her desire for relational security.</li>
+                        <li><strong>Anchored:</strong> He makes her feel protected from chaos, financially secure, and emotionally anchored through decisiveness.</li>
+                    </ul>
+
+                    <h4 class="text-lg font-serif text-surface-900 dark:text-white font-semibold mt-6">Understanding His Communication</h4>
+                    <p>He communicates based on priorities. Understanding this helps prevent taking his bluntness personally:</p>
+                    <ul class="list-disc pl-5 space-y-2 marker:text-surface-500 dark:marker:text-surface-400 text-sm">
+                        <li><strong>Action / Impact:</strong> What steps are immediately actionable?</li>
+                        <li><strong>Purpose / Strategy:</strong> What is the end result?</li>
+                        <li><strong>Tasks / Efficiency:</strong> Is there a detailed plan and timeline?</li>
+                        <li><strong>People / Cohesion:</strong> (Often his last filter) How does this affect people?</li>
+                    </ul>
+
+                    <div class="mt-8 p-4 bg-surface-50 dark:bg-surface-900 border-l-4 border-accentRose-600 rounded-r-md">
+                        <h4 class="text-sm font-bold uppercase tracking-wider text-surface-900 dark:text-white mb-2">The Core Conflict to Watch</h4>
+                        <p class="text-sm text-surface-800 dark:text-surface-300">He believes truth and efficiency matter more than emotional comfort. You believe tone, harmony, and emotional impact matter just as much. If he is blunt or impatient, he is usually trying to fix a problem directly, not deliberately dismissing your feelings. Cultivate resilience.</p>
+                    </div>
+                `,
+                jason: `
+                    <h3 class="text-xl font-serif text-accentBlue-800 dark:text-accentBlue-400 font-semibold mt-0">The ENTJ Visionary Commander</h3>
+                    <p>An ENTJ man brings direction, ambition, decisiveness, strategic thinking, and emotional steadiness under pressure. He is the commander building the vision. He values being in control, efficiency, logical reasoning, and directness.</p>
+                    
+                    <h4 class="text-lg font-serif text-surface-900 dark:text-white font-semibold mt-6">What He Sees in Her (ESFJ)</h4>
+                    <ul class="list-disc pl-5 space-y-2 marker:text-accentBlue-600">
+                        <li><strong>Emotionally Softened:</strong> She brings a warmth that allows him to rest from always being "the strong one."</li>
+                        <li><strong>Socially Stabilized:</strong> He feels admired and cared for in highly practical ways.</li>
+                        <li><strong>Loyal & Grounded:</strong> He values her overt femininity, relational intentionality, and the way she builds a home around his vision.</li>
+                    </ul>
+
+                    <h4 class="text-lg font-serif text-surface-900 dark:text-white font-semibold mt-6">His Dislikes & Stressors</h4>
+                    <ul class="list-disc pl-5 space-y-2 marker:text-surface-500 dark:marker:text-surface-400 text-sm">
+                        <li>Being micromanaged or told what to do.</li>
+                        <li>Pessimism, indecision, or suppressing an upbeat environment.</li>
+                        <li>Being surprised by unknown issues or dealing with manipulative behavior.</li>
+                    </ul>
+
+                    <div class="mt-8 p-4 bg-surface-50 dark:bg-surface-900 border-l-4 border-accentBlue-600 rounded-r-md">
+                        <h4 class="text-sm font-bold uppercase tracking-wider text-surface-900 dark:text-white mb-2">The Core Conflict to Watch</h4>
+                        <p class="text-sm text-surface-800 dark:text-surface-300">She believes tone and harmony matter just as much as facts. You believe problems should be solved directly. You may accidentally wound her constantly without realizing it. <em>"I'm just being honest"</em> translates to her as <em>"You don't care about my feelings."</em> Cultivate tenderness and watch your delivery.</p>
+                    </div>
+                `
             };
 
-            requestAnimationFrame(updateCounter);
-        };
+            const jasonGoals = [
+                "I listened for understanding today, not just to fix a problem.",
+                "I remembered that her tone and emotional impact matter, not just the facts.",
+                "I expressed appreciation for her practical nurturing and loyalty.",
+                "I paused before giving blunt criticism."
+            ];
 
-        const countUpObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCountUp(entry.target);
-                    // Unobserve after animating once
-                    observer.unobserve(entry.target);
+            const kelseyGoals = [
+                "I communicated my feelings directly without expecting him to mind-read.",
+                "I recognized his drive for efficiency isn't necessarily a dismissal of my emotions.",
+                "I gave him space and autonomy to tackle a task his way.",
+                "I helped create a positive, upbeat environment."
+            ];
+
+            const verses = [
+                { text: "Husbands, love your wives, as Christ loved the church and gave himself up for her.", ref: "Ephesians 5:25" },
+                { text: "Likewise, husbands, live with your wives in an understanding way, showing honor to the woman as the weaker vessel, since they are heirs with you of the grace of life, so that your prayers may not be hindered.", ref: "1 Peter 3:7" },
+                { text: "Husbands, love your wives, and do not be harsh with them.", ref: "Colossians 3:19" },
+                { text: "A soft answer turns away wrath, but a harsh word stirs up anger.", ref: "Proverbs 15:1" },
+                { text: "Let all that you do be done in love.", ref: "1 Corinthians 16:14" },
+                { text: "Above all, keep loving one another earnestly, since love covers a multitude of sins.", ref: "1 Peter 4:8" }
+            ];
+
+            function loadDailyVerse() {
+                const todayStr = new Date().toDateString();
+                let hash = 0;
+                for (let i = 0; i < todayStr.length; i++) {
+                    hash = todayStr.charCodeAt(i) + ((hash << 5) - hash);
                 }
-            });
-        }, { threshold: 0.5 }); // Trigger when 50% of the element is visible
-
-        const countUpElements = document.querySelectorAll('.count-up');
-        countUpElements.forEach(el => countUpObserver.observe(el));
-
-        // CAPTCHA and Form Logic
-        let captchaTotal = 0;
-
-        function generateCaptcha() {
-            const num1 = Math.floor(Math.random() * 10) + 1;
-            const num2 = Math.floor(Math.random() * 10) + 1;
-            captchaTotal = num1 + num2;
-            const questionEl = document.getElementById('captcha-question');
-            const answerEl = document.getElementById('captcha-answer');
-            if (questionEl && answerEl) {
-                questionEl.innerText = `What is ${num1} + ${num2}?`;
-                answerEl.value = '';
-            }
-        }
-
-        const modal = document.getElementById('contact-modal');
-        const formView = document.getElementById('form-view');
-        const successView = document.getElementById('success-view');
-        const statusDiv = document.getElementById('form-status');
-        
-        function openContact() {
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            
-            // Reset views
-            if (formView && successView && statusDiv) {
-                formView.classList.remove('hidden');
-                successView.classList.add('hidden');
-                statusDiv.classList.add('hidden'); 
-            }
-            generateCaptcha(); 
-        }
-
-        function closeContact() {
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape" && !modal.classList.contains('hidden')) {
-                closeContact();
-            }
-        });
-
-        // AJAX Form Submission
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('submit-btn');
-            const userAnswer = parseInt(document.getElementById('captcha-answer').value);
-            
-            // 1. Verify CAPTCHA
-            if (userAnswer !== captchaTotal) {
-                statusDiv.innerHTML = `<div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100 font-bold text-sm">Incorrect math answer. Try again.</div>`;
-                statusDiv.classList.remove('hidden');
-                generateCaptcha();
-                return;
-            }
-
-            // 2. Prepare Loading State
-            statusDiv.classList.add('hidden');
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = `Sending... <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>`;
-            submitBtn.disabled = true;
-            lucide.createIcons();
-
-            const form = e.target;
-            const formData = new FormData(form);
-
-            // 3. Send AJAX Request to FormSubmit
-            fetch('https://formsubmit.co/ajax/jasonandkelseyderamo@gmail.com', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
+                const verseIndex = Math.abs(hash) % verses.length;
+                
+                const todayVerse = verses[verseIndex];
+                const verseEl = document.getElementById('bibleVerse');
+                const refEl = document.getElementById('bibleRef');
+                if(verseEl && refEl) {
+                    verseEl.textContent = `"${todayVerse.text}"`;
+                    refEl.textContent = `— ${todayVerse.ref}`;
                 }
-            })
-            .then(response => response.json())
-            .then(data => {
-                // If success is returned, or FormSubmit sends the specific unactivated warning text
-                if (data.success || data.message === "Form action is not activated. A new activation email has been sent to your email address.") {
-                    formView.classList.add('hidden');
-                    successView.classList.remove('hidden');
-                    form.reset();
+            }
+            loadDailyVerse();
+
+            function renderGoals() {
+                const goals = currentUser === 'jason' ? jasonGoals : kelseyGoals;
+                const checkboxClass = currentUser === 'jason' ? 'checkbox-jason' : 'checkbox-kelsey';
+                
+                // Clear and render new goals
+                goalsContainer.innerHTML = goals.map((goal, index) => `
+                    <label class="flex items-start gap-3 cursor-pointer group">
+                        <div class="flex items-center h-5 mt-0.5">
+                            <input type="checkbox" class="${checkboxClass} bg-white dark:bg-surface-800 border-surface-300 dark:border-surface-600 rounded flex-shrink-0" data-index="${index}">
+                        </div>
+                        <span class="text-sm text-surface-900 dark:text-surface-300 font-medium transition-colors leading-relaxed">${goal}</span>
+                    </label>
+                `).join('');
+            }
+
+            function loadNotebookContent() {
+                notebookTitle.textContent = currentUser === 'kelsey' ? "Navigating Kelsey's Needs" : "Understanding Jason's Drive";
+                notebookContent.innerHTML = notebookData[currentUser];
+            }
+
+            function filterArticles(searchTerm = searchInput.value) {
+                let visibleCount = 0;
+                const term = searchTerm.toLowerCase();
+
+                articleCards.forEach(card => {
+                    const title = card.getAttribute('data-title').toLowerCase();
+                    const tags = card.getAttribute('data-tags').toLowerCase();
+                    const isJason = card.classList.contains('jason-tag');
+                    const isKelsey = card.classList.contains('kelsey-tag');
+                    
+                    const matchesUser = (currentUser === 'jason' && isJason) || (currentUser === 'kelsey' && isKelsey);
+                    const matchesSearch = title.includes(term) || tags.includes(term);
+
+                    if (matchesUser && matchesSearch) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (visibleCount === 0) {
+                    noResults.classList.remove('hidden');
                 } else {
-                    throw new Error('Form submission failed');
+                    noResults.classList.add('hidden');
                 }
-            })
-            .catch(error => {
-                statusDiv.innerHTML = `<div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100 font-bold text-sm">Oops! Something went wrong. Try again later.</div>`;
-                statusDiv.classList.remove('hidden');
-            })
-            .finally(() => {
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-                lucide.createIcons();
+            }
+
+            function switchUser(user) {
+                currentUser = user;
+                renderGoals();
+                loadNotebookContent();
+                
+                if (user === 'jason') {
+                    btnJason.className = "px-6 py-2 rounded-full font-medium text-sm transition-colors bg-accentBlue-900 text-white shadow-md";
+                    btnKelsey.className = "px-6 py-2 rounded-full font-medium text-sm transition-colors bg-white dark:bg-surface-800 text-surface-600 dark:text-surface-300 border border-surface-200 dark:border-surface-700 hover:bg-accentRose-50 dark:hover:bg-surface-700";
+                    
+                    bibleContainer.className = "bg-accentBlue-900 p-6 rounded-xl text-white transition-colors duration-300";
+                    searchInput.classList.replace('focus:border-accentRose-600', 'focus:border-accentBlue-600');
+                    
+                    kelseyCheatSheet.classList.remove('hidden');
+                    jasonCheatSheet.classList.add('hidden');
+
+                    mobileLinks.forEach(link => {
+                        link.classList.replace('hover:text-accentRose-600', 'hover:text-accentBlue-600');
+                    });
+
+                } else {
+                    btnKelsey.className = "px-6 py-2 rounded-full font-medium text-sm transition-colors bg-accentRose-900 text-white shadow-md";
+                    btnJason.className = "px-6 py-2 rounded-full font-medium text-sm transition-colors bg-white dark:bg-surface-800 text-surface-600 dark:text-surface-300 border border-surface-200 dark:border-surface-700 hover:bg-accentBlue-50 dark:hover:bg-surface-700";
+                    
+                    bibleContainer.className = "bg-accentRose-900 p-6 rounded-xl text-white transition-colors duration-300";
+                    searchInput.classList.replace('focus:border-accentBlue-600', 'focus:border-accentRose-600');
+                    
+                    jasonCheatSheet.classList.remove('hidden');
+                    kelseyCheatSheet.classList.add('hidden');
+
+                    mobileLinks.forEach(link => {
+                        link.classList.replace('hover:text-accentBlue-600', 'hover:text-accentRose-600');
+                    });
+                }
+
+                filterArticles();
+            }
+
+            btnJason.addEventListener('click', () => switchUser('jason'));
+            btnKelsey.addEventListener('click', () => switchUser('kelsey'));
+
+            // Initialize app state
+            renderGoals();
+            loadNotebookContent();
+            filterArticles();
+
+            searchInput.addEventListener('input', function(e) {
+                filterArticles(e.target.value);
             });
-        }
+        });
     </script>
 </body>
 </html>
